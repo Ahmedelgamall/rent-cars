@@ -14,9 +14,8 @@ class SettingsTableSeeder extends Seeder
     {
         Setting::create([
             'id' => '1',
-            'email' => 'admin@pharmacy.com',
+            'email' => 'admin@rent.com',
             'phone' => '01009706732',
-            'logo' => '../public/assets/images/logo.png',
             'created_at' => now(),
             'updated_at' => now()
         ]);

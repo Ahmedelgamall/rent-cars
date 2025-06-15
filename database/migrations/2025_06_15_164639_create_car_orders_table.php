@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('car_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->nullable();
+            $table->bigInteger('car_id')->unsigned()->nullable();
+            $table->foreign('car_id')->references('id')->on('cars')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('name',255)->nullable();
             $table->string('phone')->nullable();
-            $table->string('logo',255)->nullable();
-            $table->string('about_image',255)->nullable();
-            $table->string('home_image',255)->nullable();
+            $table->string('email')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('car_orders');
     }
 };

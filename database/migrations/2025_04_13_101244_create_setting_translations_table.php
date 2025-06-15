@@ -17,7 +17,10 @@ return new class extends Migration
             $table->foreign('setting_id')->references('id')->on('settings')->onUpdate('cascade')->onDelete('cascade');
             $table->string('system_name')->nullable();
             $table->string('about_us_title',255)->nullable();
+            $table->string('home_first_title',255)->nullable();
+            $table->string('home_second_title',255)->nullable();
             $table->text('about_us_description')->nullable();
+            $table->text('footer_description')->nullable();
             $table->string('address',200)->nullable();
             $table->string('locale')->index()->nullable();
             $table->unique(['setting_id', 'locale']);
