@@ -223,7 +223,7 @@ class CarsController extends Controller
         ]);
 
 
-
+        $row = Car::findOrFail($id);
         $except=[];
         $except[]='images';
         foreach(getLanguages() as $lang){
@@ -240,7 +240,7 @@ class CarsController extends Controller
             if($row->images!=''&&count(json_decode($row->images))>0){
                 $images=[];
                 foreach ($request->images as $i) {
-                    $img = upload_multiple_image($request, $i, 600, 701, 'products');
+                    $img = upload_multiple_image($request, $i, 600, 701, 'cars');
                     $images[]=$img;
                     
                 }
@@ -250,7 +250,7 @@ class CarsController extends Controller
             else {
                 $images=[];
                 foreach ($request->images as $i) {
-                    $img = upload_multiple_image($request, $i, 600, 701, 'products');
+                    $img = upload_multiple_image($request, $i, 600, 701, 'cars');
                     $images[]=$img;
                     
                 }
@@ -260,7 +260,7 @@ class CarsController extends Controller
             }
            
         }
-        $row = Car::findOrFail($id);
+       
         $row->update($data);
         $row->attributes()->delete();
         foreach(getLanguages() as $lang){

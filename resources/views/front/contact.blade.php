@@ -1,117 +1,48 @@
 @extends('front.layouts.app')
 @section('content')
-    <!-- BREADCRUMB AREA START -->
-    <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image "
-        data-bs-bg="{{ route('file_show', [settings('cover_image'), 'settings']) }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__breadcrumb-inner">
-                        <h1 class="page-title">{{ getTranslatedWords('contact us') }}</h1>
-                        <div class="ltn__breadcrumb-list">
-                            <ul>
-                                <li><a href="{{ route('home') }}"><span class="ltn__secondary-color"><i
-                                                class="fas fa-home"></i></span> {{ getTranslatedWords('home') }}</a></li>
-                                <li>{{ getTranslatedWords('contact us') }}</li>
-                            </ul>
-                        </div>
+<div class="container message" style="background-color:white">
+    <div class="row">
+        <div class="col-md-4 col-12">
+            <h2 style="font-weight: 800; font-size:40px;">{{getTranslatedWords('contact us')}}</h2>
+            <p>{{settings('address')}}</p>
+            <h3>{{settings('phone')}}</h3>
+            <p> <i class="fa-solid fa-envelope"></i> {{settings('email')}}</p>
+            <div class="follow-us" style="display: flex;">
+                <p>{{getTranslatedWords('Follow US')}}</p>
+                <div class="social-icons" style="display: flex; padding-top: 15px;">
+                    <a class="social-a" target="_blank" href="{{settings('facebook_link')}}"><div class="social-icon"><i class="fa-brands fa-facebook"></i></div></a>
+                      <a class="social-a" target="_blank" href="{{settings('twitter_link')}}"><div class="social-icon"><i class="fa-brands fa-twitter"></i></div></a>
+                      <a class="social-a" target="_blank" href="{{settings('instagram_link')}}"><div class="social-icon"><i class="fa-brands fa-instagram"></i></div></a>  
                     </div>
-                </div>
+               
             </div>
         </div>
-    </div>
-    <!-- BREADCRUMB AREA END -->
-
-    <!-- CONTACT ADDRESS AREA START -->
-    <div class="ltn__contact-address-area mb-90">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
-                        <div class="ltn__contact-address-icon">
-                            <img src="{{ asset('website_assets/img/icons/10.png') }}" alt="Icon Image">
-                        </div>
-                        <h3>{{ getTranslatedWords('email') }}</h3>
-                        <p>{{ settings('email') }}</p>
-                    </div>
+        <div class="col-md-2 col-12"></div>
+        <div class="col-md-6 col-12" style="background-color: aliceblue; border-radius: 10px;">
+        <form action="{{route('send-contact')}}" action="" method="post">
+            @csrf
+            <div class="row" style="padding: 12px;">
+                <div class="col-4 input-field"><input placeholder="{{getTranslatedWords('name')}}" type="text" name="name" /></div>
+                <div class="col-4 input-field"><input placeholder="{{getTranslatedWords('email')}}" type="email" name="email" /></div>
+                <div class="col-4 input-field"><input placeholder="{{getTranslatedWords('phone')}}" type="number" name="phone" /></div>
+                <div class="col-12 client-message">
+                    <input class="client-message-input" placeholder="{{getTranslatedWords('message')}}*" name="message" type="text" />
                 </div>
-                <div class="col-lg-4">
-                    <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
-                        <div class="ltn__contact-address-icon">
-                            <img src="{{ asset('website_assets/img/icons/11.png') }}" alt="Icon Image">
-                        </div>
-                        <h3>{{ getTranslatedWords('phone') }}</h3>
-                        <p>{{ settings('phone') }}</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
-                        <div class="ltn__contact-address-icon">
-                            <img src="{{ asset('website_assets/img/icons/12.png') }}" alt="Icon Image">
-                        </div>
-                        <h3>{{ getTranslatedWords('address') }}</h3>
-                        <p>{{ settings('address') }}</p>
-                    </div>
+                <div class="row accept-package">
+                   
+                    <button type="submit" class="col-6">{{getTranslatedWords('send')}}</button>
                 </div>
             </div>
+        </form>
+            
         </div>
     </div>
-    <!-- CONTACT ADDRESS AREA END -->
+</div>
+</div>
 
-    <!-- CONTACT MESSAGE AREA START -->
-    <div class="ltn__contact-message-area mb-120 mb--100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__form-box contact-form-box box-shadow white-bg">
-                        <h4 class="title-2">{{ getTranslatedWords('send contact message') }}</h4>
-                        <form id="contact-form" action="{{ route('send-contact') }}" method="post">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-item input-item-name ltn__custom-icon">
-                                        <input type="text" name="name"
-                                            placeholder="{{ getTranslatedWords('name') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-item input-item-email ltn__custom-icon">
-                                        <input type="email" name="email"
-                                            placeholder="{{ getTranslatedWords('email') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-item input-item-phone ltn__custom-icon">
-                                        <input type="text" name="phone"
-                                            placeholder="{{ getTranslatedWords('phone') }}">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="input-item input-item-textarea ltn__custom-icon">
-                                <textarea name="message" placeholder="{{ getTranslatedWords('message') }}"></textarea>
-                            </div>
-
-                            <div class="btn-wrapper mt-0">
-                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                    type="submit">{{ getTranslatedWords('send') }}</button>
-                            </div>
-                            <p class="form-messege mb-0 mt-20"></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- CONTACT MESSAGE AREA END -->
-
-    <!-- GOOGLE MAP AREA START -->
-    <div class="google-map mb-120">
-
-        <iframe
-            src="https://maps.google.com/maps?q={{ urlencode(settings('address')) }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-    </div>
-    <!-- GOOGLE MAP AREA END -->
+<div class="maps" style="display: flex; justify-content:center;">
+    <iframe src="https://maps.google.com/maps?q={{ urlencode(settings('address')) }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="1290" height="500" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+   
 @endsection

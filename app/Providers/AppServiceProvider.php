@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Paginator::defaultView('front.components.pagination');
+        //Paginator::defaultView('front.components.pagination');
     }
 
     /**

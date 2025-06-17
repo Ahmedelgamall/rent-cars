@@ -60,7 +60,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('about-us', [HomeController::class, 'about'])->name('about-us');
     Route::get('contact-us', [HomeController::class, 'contact'])->name('contact-us');
     Route::post('send-contact', [HomeController::class, 'send_contact'])->name('send-contact');
-    
+    Route::get('show-cars', [HomeController::class, 'cars'])->name('cars');
+    Route::get('car/{slug}', [HomeController::class, 'info'])->name('car-info');
+    Route::post('order-car', [HomeController::class, 'order'])->name('order-car');
 
     Route::group(['middleware' => ['adminmw']], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

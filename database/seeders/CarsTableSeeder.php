@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Car;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Str;
 
 
 class CarsTableSeeder extends Seeder {
@@ -48,8 +49,10 @@ class CarsTableSeeder extends Seeder {
                 $category = 3;
                 $price = 7000;
             }
+            $slug=Str::slug('سيارة '.$i);
             $car = Car::create( [
                 'title:ar'=>'سيارة '.$i,
+                'slug:ar'=>$slug,
                 'price'=>$price,
                 'category_id'=>$category,
                 'year_model'=>2010,

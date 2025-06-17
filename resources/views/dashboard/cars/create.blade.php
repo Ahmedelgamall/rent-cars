@@ -206,7 +206,7 @@
                                             @component('components.input_trans_array', [
     'type' => 'text',
     'label' => getTranslatedWords('attribute title'),
-    'required' => 'false',
+    'required' => false,
 ])
                                                 key
                                             @endcomponent
@@ -215,7 +215,7 @@
                                             @component('components.input_trans_array', [
     'type' => 'textarea',
     'label' => getTranslatedWords('attribute value'),
-    'required' => 'false',
+    'required' => false,
 ])
                                                 value
                                             @endcomponent
