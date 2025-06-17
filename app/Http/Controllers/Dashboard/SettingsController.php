@@ -84,35 +84,29 @@ class SettingsController extends Controller
             //'whatsapp' => 'nullable|numeric',
             'logo' => 'nullable|image|max:2024',
             'about_us_image' => 'nullable|image|max:2024',
-            'cover_image' => 'nullable|image|max:2024',
-            'faq_image' => 'nullable|image|max:2024',
+            'home_image' => 'nullable|image|max:2024'
         ]);
 
         validate_trans($request, [
             ['system_name','required'],
         ]);
         
-        $data = $request->except(['logo','about_image','cover_image','faq_image']);
+        $data = $request->except(['logo','about_image','home_image']);
         $setting = Setting::first();
         
         if ($request->has('logo')) {
-            $image = upload_image($request, 'logo', 159, 38, 'settings');
+            $image = upload_image($request, 'logo', 200, 200, 'settings');
             $data['logo'] = $image;
         }
 
         if ($request->has('about_image')) {
-            $image = upload_image($request, 'about_image', 1140, 1210, 'settings');
+            $image = upload_image($request, 'about_image', 770 , 770, 'settings');
             $data['about_image'] = $image;
         }
 
-        if ($request->has('cover_image')) {
-            $image = upload_image($request, 'cover_image', 1920, 404, 'settings');
-            $data['cover_image'] = $image;
-        }
-
-        if ($request->has('faq_image')) {
-            $image = upload_image($request, 'faq_image', 600, 600, 'settings');
-            $data['faq_image'] = $image;
+        if ($request->has('home_image')) {
+            $image = upload_image($request, 'home_image', 3840, 2160, 'settings');
+            $data['home_image'] = $image;
         }
 
         

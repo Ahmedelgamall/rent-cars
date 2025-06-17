@@ -151,20 +151,20 @@ function getTranslatedWordsTranslatedByCode($word,$lang)
 
 
 
-function delete_product_image(App\Models\Product $product,$field_name,$image){
+function delete_car_image(App\Models\Car $car,$field_name,$image){
     $file_name = $image;
     if(empty($file_name)) return;
-    $path=storage_path('app/public/products/');
+    $path=storage_path('app/public/cars/');
     $file = $path.$file_name;
     if(!file_exists($file)) return;
     if($image){
-        $images = json_decode($product->$field_name);
+        $images = json_decode($car->$field_name);
         $key = array_search($image, $images);
         
         unset($images[$key]);
         @unlink($file);
-        $product->$field_name=json_encode(array_values($images));
-        $product->save();
+        $car->$field_name=json_encode(array_values($images));
+        $car->save();
         return true;
     }
     else {

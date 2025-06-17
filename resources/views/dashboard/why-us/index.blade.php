@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', getTranslatedWords('blogs'))
+@section('title', getTranslatedWords('why choose us'))
 @section('css')
 <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet" />
 @endsection
@@ -20,7 +20,7 @@
         },
         @endif
         "ajax": ({
-            url: "{!! route('blogs.index') !!}",
+            url: "{!! route('why-us.index') !!}",
 
         }),
         columns: [{
@@ -31,11 +31,6 @@
             {
                 data: 'title',
                 name: 'title',
-                orderable: false
-            },
-            {
-                data: 'image',
-                name: 'image',
                 orderable: false
             },
             {
@@ -67,24 +62,21 @@
 
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{getTranslatedWords('home')}} /</span> {{getTranslatedWords('blogs')}}</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{getTranslatedWords('home')}} /</span> {{getTranslatedWords('why choose us')}}</h4>
     <!-- Basic Bootstrap Table -->
     <div class="card">
-        @can('add blog')
+        
         <div class="col-12 mt-2 mb-2" @if(App::getLocale()=='ar') dir="ltr" @else dir="rtl" @endif>
-            <a href="{{ route('blogs.create') }}" class="float-sm-right btn btn-primary">{{getTranslatedWords('add new')}}</a>
+            <a href="{{ route('why-us.create') }}" class="float-sm-right btn btn-primary">{{getTranslatedWords('add new')}}</a>
         </div>
-        @endcan
         
-        
-        {{--<h5 class="card-header">{{getTranslatedWords('blogs')}}</h5>--}}
+        {{--<h5 class="card-header">{{getTranslatedWords('why choose us')}}</h5>--}}
         <div class="table-responsive text-nowrap">
             <table class="table" id="datatables">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>{{getTranslatedWords('title')}}</th>
-                        <th>{{getTranslatedWords('image')}}</th>
                         <th>{{getTranslatedWords('actions')}}</th>
                     </tr>
                 </thead>
@@ -109,7 +101,7 @@
                     data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <form method="post" action="{{ route('blogs.destroy', 0) }}">
+            <form method="post" action="{{ route('why-us.destroy', 0) }}">
                 @csrf
                 @method('delete')
                 <div class="modal-body">

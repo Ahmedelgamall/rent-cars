@@ -83,7 +83,7 @@
                                         <img class="img-fluid"
                                             src="{{ route('file_show', ['filename' => $setting->logo, 'path' => 'settings']) }}" /><br>
                                     @endif
-                                    {{ getTranslatedWords('logo') }} 159 * 37
+                                    {{ getTranslatedWords('logo') }} 200 * 200
                                     <div class="custom-file">
                                         <input type="file" name="logo" class="custom-file-input"
                                             id="validatedCustomFile">
@@ -104,7 +104,7 @@
                                         <img class="img-fluid"
                                             src="{{ route('file_show', ['filename' => $setting->about_image, 'path' => 'settings']) }}" /><br>
                                     @endif
-                                    {{ getTranslatedWords('about_us_image') }} 1140 * 1210
+                                    {{ getTranslatedWords('about_us_image') }} 770 * 770
                                     <div class="custom-file">
                                         <input type="file" name="about_image" class="custom-file-input"
                                             id="validatedCustomFile">
@@ -120,24 +120,24 @@
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    @if ($setting->cover_image != '')
+                                    @if ($setting->home_image != '')
                                         <label for="email"
-                                            class="form-label">{{ getTranslatedWords('current cover image') }}</label>
+                                            class="form-label">{{ getTranslatedWords('current home image') }}</label>
                                         <img class="img-fluid"
-                                            src="{{ route('file_show', ['filename' => $setting->cover_image, 'path' => 'settings']) }}" /><br>
+                                            src="{{ route('file_show', ['filename' => $setting->home_image, 'path' => 'settings']) }}" /><br>
                                     @endif
-                                    {{ getTranslatedWords('cover image') }} 1920 * 404
+                                    {{ getTranslatedWords('home image') }} 3840 * 2160
                                     <div class="custom-file">
-                                        <input type="file" name="cover_image" class="custom-file-input"
+                                        <input type="file" name="home_image" class="custom-file-input"
                                             id="validatedCustomFile">
                                         <label class="custom-file-label"
-                                            for="validatedCustomFile">{{ getTranslatedWords('cover image') }}</label>
+                                            for="validatedCustomFile">{{ getTranslatedWords('home image') }}</label>
                                         <div class="invalid-feedback">
 
                                         </div>
                                     </div>
-                                    @error('cover_image')
-                                        <div class="text-danger">{{ $errors->first('cover_image') }}</div>
+                                    @error('home_image')
+                                        <div class="text-danger">{{ $errors->first('home_image') }}</div>
                                     @enderror
                                 </div>
 
@@ -169,28 +169,28 @@
                                 </div>
 
                                 
+                                <div class="mb-3 col-md-6">
+                                    @component('components.input_trans', [
+                                        'type' => 'text',
+                                        'label' => getTranslatedWords('home first title'),
+                                        'required' => 'false',
+                                        'model' => $setting,
+                                    ])
+                                        home_first_title
+                                    @endcomponent
+                                </div>
 
                                 <div class="mb-3 col-md-6">
-                                    @if ($setting->faq_image != '')
-                                        <label for="email"
-                                            class="form-label">{{ getTranslatedWords('current faqs image') }}</label>
-                                        <img class="img-fluid"
-                                            src="{{ route('file_show', ['filename' => $setting->faq_image, 'path' => 'settings']) }}" /><br>
-                                    @endif
-                                    {{ getTranslatedWords('faqs image') }} 600 * 600
-                                    <div class="custom-file">
-                                        <input type="file" name="faq_image" class="custom-file-input"
-                                            id="validatedCustomFile">
-                                        <label class="custom-file-label"
-                                            for="validatedCustomFile">{{ getTranslatedWords('faqs image') }}</label>
-                                        <div class="invalid-feedback">
-
-                                        </div>
-                                    </div>
-                                    @error('faq_image')
-                                        <div class="text-danger">{{ $errors->first('faq_image') }}</div>
-                                    @enderror
+                                    @component('components.input_trans', [
+                                        'type' => 'text',
+                                        'label' => getTranslatedWords('home second title'),
+                                        'required' => 'false',
+                                        'model' => $setting,
+                                    ])
+                                        home_second_title
+                                    @endcomponent
                                 </div>
+                               
 
 
 
@@ -229,25 +229,16 @@
 
                                 <div class="mb-3 col-md-12">
                                     @component('components.input_trans', [
-                                        'type' => 'text',
-                                        'label' => getTranslatedWords('privacy policy'),
+                                        'type' => 'textarea',
+                                        'label' => getTranslatedWords('footer description'),
                                         'required' => 'false',
                                         'model' => $setting,
                                     ])
-                                        privacy
+                                        footer_description
                                     @endcomponent
                                 </div>
 
-                                <div class="mb-3 col-md-12">
-                                    @component('components.input_trans', [
-                                        'type' => 'text',
-                                        'label' => getTranslatedWords('terms and conditions'),
-                                        'required' => 'false',
-                                        'model' => $setting,
-                                    ])
-                                        terms
-                                    @endcomponent
-                                </div>
+                                
 
                             </div>
                             <div class="mt-2">

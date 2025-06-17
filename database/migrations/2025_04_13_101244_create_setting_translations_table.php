@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('home_first_title',255)->nullable();
             $table->string('home_second_title',255)->nullable();
             $table->text('about_us_description')->nullable();
+            $table->text('meta_description')->nullable();
             $table->text('footer_description')->nullable();
             $table->string('address',200)->nullable();
             $table->string('locale')->index()->nullable();

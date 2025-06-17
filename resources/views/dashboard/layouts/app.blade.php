@@ -216,8 +216,8 @@ div.dataTables_wrapper div.dataTables_filter {
           </li>
 
           <!-- Layouts -->
- @if (auth()->user()->can('list sliders') || auth()->user()->can('list blogs') || auth()->user()->can('edit settings') || auth()->user()->can('list faqs') || auth()->user()->can('list testimonials') || auth()->user()->can('list features') || auth()->user()->can('list why choose us') || auth()->user()->can('list cities') || auth()->user()->can('list areas'))
-<li class="menu-item @if (\Route::is('sliders.*') || \Route::is('settings.*') || \Route::is('blogs.*') || \Route::is('features.*') || \Route::is('faqs.*') || \Route::is('testimonials.*') || \Route::is('why-us.*') || \Route::is('cities.*') || \Route::is('areas.*')) open active @endif">
+ @if (auth()->user()->can('edit settings') || auth()->user()->can('list faqs') || auth()->user()->can('list why choose us'))
+<li class="menu-item @if (\Route::is('sliders.*') || \Route::is('settings.*') || \Route::is('faqs.*') || \Route::is('why-us.*')) open active @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-cog"></i>
               <div data-i18n="Layouts">{{ getTranslatedWords('system settings') }}</div>
@@ -225,39 +225,14 @@ div.dataTables_wrapper div.dataTables_filter {
 
             <ul class="menu-sub">
             
-              @can('list features')
-    <li class="menu-item">
-                                            <a href="{{ route('features.index') }}" class="menu-link">
-                                              <div data-i18n="Without navbar">{{ getTranslatedWords('features') }}</div>
-                                            </a>
-                    </li>
-@endcan
-    @can('list sliders')
-    <li class="menu-item">
-                      <a href="{{ route('sliders.index') }}" class="menu-link">
-                        <div data-i18n="Without navbar">{{ getTranslatedWords('sliders') }}</div>
-                      </a>
-                </li>
-@endcan
+              
    
-@can('list blogs')
-    <li class="menu-item">
-                  <a href="{{ route('blogs.index') }}" class="menu-link">
-                    <div data-i18n="Without navbar">{{ getTranslatedWords('blogs') }}</div>
-                  </a>
-                </li>
-@endcan
+   
+
 @can('list faqs')
     <li class="menu-item">
                   <a href="{{ route('faqs.index') }}" class="menu-link">
                     <div data-i18n="Without navbar">{{ getTranslatedWords('faqs') }}</div>
-                  </a>
-                </li>
-@endcan
-@can('list testimonials')
-    <li class="menu-item">
-                  <a href="{{ route('testimonials.index') }}" class="menu-link">
-                    <div data-i18n="Without navbar">{{ getTranslatedWords('testimonials') }}</div>
                   </a>
                 </li>
 @endcan
@@ -271,21 +246,6 @@ div.dataTables_wrapper div.dataTables_filter {
                 </li>
 @endcan
 
-@can('list cities')
-    <li class="menu-item">
-                  <a href="{{ route('cities.index') }}" class="menu-link">
-                    <div data-i18n="Without navbar">{{ getTranslatedWords('cities') }}</div>
-                  </a>
-                </li>
-@endcan
-
-@can('list areas')
-    <li class="menu-item">
-                  <a href="{{ route('areas.index') }}" class="menu-link">
-                    <div data-i18n="Without navbar">{{ getTranslatedWords('areas') }}</div>
-                  </a>
-                </li>
-@endcan
            @can('edit settings')
     <li class="menu-item">
                                             <a href="{{ route('settings.index') }}" class="menu-link">
@@ -327,11 +287,11 @@ div.dataTables_wrapper div.dataTables_filter {
           </li>
 @endif
 
- @if (auth()->user()->can('list categories') || auth()->user()->can('list products'))
-<li class="menu-item @if (\Route::is('categories.*') || \Route::is('products.*') || \Route::is('offers.*')) open active @endif">
+ @if (auth()->user()->can('list categories') || auth()->user()->can('list cars'))
+<li class="menu-item @if (\Route::is('categories.*') || \Route::is('cars.*')) open active @endif">
              <a href="javascript:void(0);" class="menu-link menu-toggle">
-               <i class="menu-icon tf-icons bx bx-package"></i>
-               <div data-i18n="Layouts">{{ getTranslatedWords('products') }}</div>
+               <i class="menu-icon tf-icons bx bx-car"></i>
+               <div data-i18n="Layouts">{{ getTranslatedWords('cars') }}</div>
              </a>
  
              <ul class="menu-sub">
@@ -342,42 +302,32 @@ div.dataTables_wrapper div.dataTables_filter {
                                      </a>
                                    </li>
 @endcan
-               @can('list products')
+               @can('list cars')
     <li class="menu-item">
-                                     <a href="{{ route('products.index') }}" class="menu-link">
-                                       <div data-i18n="Without navbar">{{ getTranslatedWords('products') }}</div>
+                                     <a href="{{ route('cars.index') }}" class="menu-link">
+                                       <div data-i18n="Without navbar">{{ getTranslatedWords('cars') }}</div>
                                      </a>
                                    </li>
 
-                                   <li class="menu-item">
-                                    <a href="{{ route('products.best_seller') }}" class="menu-link">
-                                      <div data-i18n="Without navbar">{{ getTranslatedWords('best seller products') }}</div>
-                                    </a>
-                                  </li>
-
-                                  <li class="menu-item">
-                                    <a href="{{ route('offers.index') }}" class="menu-link">
-                                      <div data-i18n="Without navbar">{{ getTranslatedWords('offers') }}</div>
-                                    </a>
-                                  </li>
+                                  
 @endcan
              </ul>
            </li>
 @endif
 
 
- @if (auth()->user()->can('list customers') || auth()->user()->can('list contacts'))
-<li class="menu-item @if (\Route::is('customers.*') || \Route::is('contacts.*')) open active @endif">
+ @if (auth()->user()->can('list orders') || auth()->user()->can('list contacts'))
+<li class="menu-item @if (\Route::is('orders.*') || \Route::is('contacts.*')) open active @endif">
              <a href="javascript:void(0);" class="menu-link menu-toggle">
-               <i class="menu-icon tf-icons bx bx-user"></i>
-               <div data-i18n="Layouts">{{ getTranslatedWords('customers') }}</div>
+               <i class="menu-icon tf-icons bx bx-envelope"></i>
+               <div data-i18n="Layouts">{{ getTranslatedWords('contacts') }}</div>
              </a>
  
              <ul class="menu-sub">
-               @can('list customers')
+               @can('list orders')
     <li class="menu-item">
-                                     <a href="{{ route('customers.index') }}" class="menu-link">
-                                       <div data-i18n="Without navbar">{{ getTranslatedWords('customers') }}</div>
+                                     <a href="{{ route('orders.index') }}" class="menu-link">
+                                       <div data-i18n="Without navbar">{{ getTranslatedWords('car orders') }}</div>
                                      </a>
                                    </li>
 @endcan
@@ -392,31 +342,10 @@ div.dataTables_wrapper div.dataTables_filter {
            </li>
 @endif
 
- @if (auth()->user()->can('list orders') || auth()->user()->can('list coupons'))
-<li class="menu-item @if (\Route::is('orders.*') || \Route::is('coupons.*')) open active @endif">
-             <a href="javascript:void(0);" class="menu-link menu-toggle">
-               <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
-               <div data-i18n="Layouts">{{ getTranslatedWords('orders') }}</div>
-             </a>
  
-             <ul class="menu-sub">
-               @can('list orders')
-    <li class="menu-item">
-                                     <a href="{{ route('orders.index') }}" class="menu-link">
-                                       <div data-i18n="Without navbar">{{ getTranslatedWords('orders') }}</div>
-                                     </a>
-                                   </li>
-@endcan
-               @can('list coupons')
-    <li class="menu-item">
-                                     <a href="{{ route('coupons.index') }}" class="menu-link">
-                                       <div data-i18n="Without navbar">{{ getTranslatedWords('coupons') }}</div>
-                                     </a>
-                                   </li>
-@endcan
              </ul>
            </li>
-@endif
+
              
    
           
@@ -463,30 +392,7 @@ div.dataTables_wrapper div.dataTables_filter {
                  
             </li> --}}
 
-            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-              <a  id="make_notifications_read" class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <i class="bx bx-bell" style="font-size:1.4em"></i>
-                    @if (auth()->user()->unreadNotifications()->count())
-<span class="notifications_count flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">{{ auth()->user()->unreadNotifications()->count() }}</span>
-@endif
-              </a>
-               <ul class="dropdown-menu dropdown-menu-end">
-                    @foreach (auth()->user()->notifications()->latest()->take(7)->get() as $key => $notification)
-<li><a class="dropdown-item"
-                                          href="javascript:void(0);">
-                                      @foreach ($notification->data as $d)
-@endforeach
-                                      {{ $notification->data['message:' . app()->getLocale()] }}</a>
-                                  </li>
-@endforeach
-                               <a href="{{ route('myNotifications') }}"
-                      class="btn btn-primary mt-2 mb-2 d-block text-center">{{ getTranslatedWords('show all') }}</a>
-               </ul>
-               
-               
-               
-               
-          </li>
+          
            
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -593,13 +499,13 @@ div.dataTables_wrapper div.dataTables_filter {
 
       })
 
-      $(document).on('click', '#make_notifications_read', function() {
+      {{--$(document).on('click', '#make_notifications_read', function() {
 
           $.get("{{ route('markReadNotifications') }}", function(data) {
               $(".notifications_count").hide();
 
           });
-      });
+      });--}}
   </script>
   @yield('js')
 </body>

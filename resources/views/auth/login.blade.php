@@ -21,7 +21,7 @@
         body::after {
             content: "";
 
-            background: url("{{ asset('assets/background.jpg') }}");
+            background: url("{{ asset('assets/background.jpeg') }}");
             background-repeat: no-repeat;
             background-size: cover;
             opacity: 0.7;

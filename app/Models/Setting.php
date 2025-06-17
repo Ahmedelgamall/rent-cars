@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 
-class Setting extends Model implements TranslatableContract
-{
+class Setting extends Model implements TranslatableContract {
     use Translatable;
     protected $guarded = [];
-    protected $appends = ['logo_path'];
+    protected $appends = [ 'logo_path' ];
 
     public $translatedAttributes = [
-        'system_name','about_us_title','about_us_description','address','meta_description','terms','privacy'
+        'system_name', 'about_us_title', 'about_us_description', 'address', 'meta_description', 'home_first_title', 'home_second_title'
+        , 'footer_description'
     ];
 
-    public function getLogoPathAttribute()
-    {
-        return route('file_show', [$this->logo, 'settings']);
+    public function getLogoPathAttribute() {
+        return route( 'file_show', [ $this->logo, 'settings' ] );
     }
 }

@@ -4,7 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\AdminsController;
+use App\Http\Controllers\Dashboard\FaqsController;
+use App\Http\Controllers\Dashboard\ContactsController;
+use App\Http\Controllers\Dashboard\OrdersController;
+use App\Http\Controllers\Dashboard\WhyUsController;
 use App\Http\Controllers\Dashboard\RolesController;
+use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\Dashboard\CarsController;
+ 
 
 
 use App\Http\Controllers\Front\HomeController;
@@ -63,18 +70,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
 
 
-       
+        
 
         Route::resource('settings', SettingsController::class);
-       
-
         Route::resource('admins', AdminsController::class);
+        Route::resource('categories', CategoriesController::class);
+        Route::resource('cars', CarsController::class);
+        Route::post('delete_car_image/{id}', [CarsController::class, 'delete_car_image'])->name('cars.delete_car_image');
+        Route::resource('faqs', FaqsController::class);
+        Route::resource('contacts', ContactsController::class);
+        Route::resource('orders', OrdersController::class);
+        Route::resource('why-us', WhyUsController::class); 
         Route::resource('roles', RolesController::class);
         Route::get('get_permissions', [RolesController::class, 'get_permissions']);
         Route::post('show_permissions', [RolesController::class, 'show_permissions']);
         Route::get('get_permissions_per_monitor', [RolesController::class, 'get_permissions_per_monitor']);
-
-        Route::resource('contacts', ContactsController::class);
 
     });
 
