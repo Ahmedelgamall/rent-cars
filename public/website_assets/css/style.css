@@ -562,7 +562,7 @@ html {
 .smallcard img {
   width: 100%;
   height: 195px;
-  object-fit: cover;
+  object-fit: fill;
   border: solid transparent 1px;
   border-radius: 10px 10px 0 0;
 }
@@ -1039,6 +1039,7 @@ footer .container {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  direction: rtl;
 }
 
 .cardd {
