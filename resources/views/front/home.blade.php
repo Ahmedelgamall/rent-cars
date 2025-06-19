@@ -56,28 +56,40 @@
           tabindex="0"
         >
               <div class="row">
-                  @foreach (App\Models\Car::where('category_id',$cat->id)->get() as $car)
-                  <div class="col-lg-3 col-12 smallcard-col">
-                    <div class="card smallcard">
-                    <a href="{{route('car-info',$car->slug)}}"
-                    ><img src="{{ route('file_show', [json_decode($car->images)[0], 'cars']) }}"
-                      /></a>
-                      <div class="card-body">
-                      <a href="{{route('car-info',$car->slug)}}"><h5 class="card-title">{{$car->title}}</h5></a>
-                      <div class="small-price">{{$car->price}}</div>
-                        <hr />
-                        <div class="card-text">
-                          <div class="card-info">
-                          <div class="small-year">{{$car->model}}</div>
-                            <div class="small-opt">{{$car->year_model}}</div>
-                          </div>
-                        </div>
-                      </div>
+@foreach (App\Models\Car::where('category_id',$cat->id)->get() as $car)
+    <div class="col-lg-3 col-12 smallcard-col">
+        <div class="card smallcard">
+
+            @php
+                $images = json_decode($car->images);
+            @endphp
+
+            <a href="{{ route('car-info', $car->slug) }}">
+                @if (is_array($images) && isset($images[0]))
+                    <img src="{{ route('file_show', [$images[0], 'cars']) }}" />
+                @else
+                    <img src="{{ asset('images/default-car.jpg') }}" />
+                @endif
+            </a>
+
+            <div class="card-body">
+                <a href="{{ route('car-info', $car->slug) }}">
+                    <h5 class="card-title">{{ $car->title }}</h5>
+                </a>
+                <div class="small-price">{{ $car->price }}</div>
+                <hr />
+                <div class="card-text">
+                    <div class="card-info">
+                        <div class="small-year">{{ $car->model }}</div>
+                        <div class="small-opt">{{ $car->year_model }}</div>
                     </div>
-                  </div>
-                  @endforeach
-                
-                
+                </div>
+            </div>
+
+        </div>
+    </div>
+@endforeach
+
                
               </div>
         </div>

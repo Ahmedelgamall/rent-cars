@@ -102,7 +102,7 @@ html {
 
 .content .home-container::after {
   content: "";
-  background-color: white;
+  background-color: #222732;
   width: 100%;
   height: 100%;
   position: absolute;

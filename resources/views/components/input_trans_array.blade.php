@@ -21,14 +21,14 @@
     @if ($type != 'textarea')
         <input @if ($required) required @endif type="{{ $type }}"
             class="form-control @isset($class) {{ $class }} @endisset"
-            name="{{ $slot }}:{{ $lang }}[]" dir="{{ $dir }}"
+            name="{{ $slot }}:{{ $lang }}" dir="{{ $dir }}"
             value="{{ old($slot . ':' . $lang) ?? ($translation->$slot ?? '') }}" placeholder="{{ $label }}">
         <span class="help-block">{{ $lang == 'ar' ? 'العربية' : 'english' }}</span>
         <div class="clearfix"> </div> <br />
     @else
         <textarea @if ($required) required @endif
             class="form-control editor @isset($class) {{ $class }} @endisset"
-            name="{{ $slot }}:{{ $lang }}[]" dir="{{ $dir }}">
+            name="{{ $slot }}:{{ $lang }}" dir="{{ $dir }}">
 {!! old($slot . ':' . $lang) ?? ($translation->$slot ?? '') !!}
 </textarea>
         <span class="help-block">{{ $lang == 'ar' ? 'العربية' : 'english' }}</span>

@@ -13,11 +13,9 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['title:ar' => 'هيونداى'],
-            ['title:ar' => 'مرسيدس'],
-            ['title:ar' => 'فيات'],
-            ['title:ar' => 'شيرى'],
-            ['title:ar' => 'هوندا']
+            ['title:ar' => 'سيارات فخمة'],
+            ['title:ar' => 'سيارات رجال اعمال'],
+            ['title:ar' => 'فان']
         ];
 
         foreach ($categories as $category) {

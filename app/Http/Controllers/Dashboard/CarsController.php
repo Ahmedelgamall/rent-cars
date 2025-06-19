@@ -137,7 +137,12 @@ class CarsController extends Controller
         $data = $request->except($except);
         $data['slug:ar']=Str::slug($data['title:ar']);
         $arabic='meta_keywords:ar';
-        $data['meta_keywords:ar']=implode(',', $request->$arabic);
+$keywords = $request->input($arabic);
+
+$keywords = $request->input($arabic);
+
+$data['meta_keywords:ar'] = is_array($keywords) ? implode(',', $keywords) : $keywords;
+
         $images=[];
         if ($request->has('images')) {
             

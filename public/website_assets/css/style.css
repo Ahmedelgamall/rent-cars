@@ -36,6 +36,13 @@ html {
   font-size: 22px;
 }
 
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto !important;
+        justify-content: end !important;
+    }
+
+
 .fa-solid {
   color: var(--mainColor);
 }
@@ -102,13 +109,13 @@ html {
 
 .content .home-container::after {
   content: "";
-  background-color: white;
+  background-color: #222732;
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 0.2;
+  opacity: 0.5;
   z-index: -1;
 }
 
@@ -936,12 +943,13 @@ footer .container {
   position: relative;
   top: 0;
   border-radius: 10px;
+  border: 2px solid transparent;
 }
 
 .info .conds .row button:hover {
   color: var(--mainColor);
-  border-top: 2px solid var(--mainColor);
   background-color: transparent;
+  border-color: var(--mainColor);
 }
 
 .info .conds .row button:active,
