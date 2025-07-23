@@ -167,7 +167,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 col-md-6">
+                                {{--<div class="mb-3 col-md-6">
                                     <label for="email" class="form-label">{{ getTranslatedWords('kilometers') }}</label>
                                     <input type="number" value="{{ $row->kilometers }}" class="form-control" name="kilometers"
                                         placeholder="{{ getTranslatedWords('kilometers') }}">
@@ -183,7 +183,7 @@
                                     @error('year_model')
                                         <div class="text-danger">{{ $errors->first('year_model') }}</div>
                                     @enderror
-                                </div>
+                                </div>--}}
 
                                 <div class="mb-3 col-md-6">
                                     <label for="email" class="form-label">{{ getTranslatedWords('images') }} 980 * 490</label>

@@ -46,8 +46,8 @@
         <ul class="st-ul">
           <li>{{$car->category->title}}</li>
           <li>{{$car->model}}</li>
-          <li>{{$car->year_model}}</li>
-          <li>{{$car->kilometers}} {{getTranslatedWords('km')}}</li>
+          {{--<li>{{$car->year_model}}</li>
+          <li>{{$car->kilometers}} {{getTranslatedWords('km')}}</li>--}}
         </ul>
         <hr />
         <h2>{{$car->price}} {{getTranslatedWords('L.E')}}</h2>
